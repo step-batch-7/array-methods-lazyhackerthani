@@ -30,3 +30,13 @@ ArrayVoid_ptr filter_void(ArrayVoid_ptr src, PredicateVoid predicate){
 }
   return result;
 }
+
+Object reduce_void(ArrayVoid_ptr src, Object init, ReducerVoid reducer){
+  int count = src->length;
+  Object result=init;
+  for (int i = 0; i < count; i++)
+  {
+    result = reducer(result,src->array[i]);
+  }
+  return result;
+}
